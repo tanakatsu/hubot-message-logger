@@ -27,13 +27,20 @@ You'll see some start up output and a prompt:
     [Sat Feb 28 2015 12:38:27 GMT+0000 (GMT)] INFO Using default redis on localhost:6379
     logger>
 
-Then you can interact with hubot-message-logger by typing `hubot-message-logger help`.
+Then you can interact with hubot-message-logger by typing `logger help`.
 
     logger> logger help
     logger animate me <query> - The same thing as `image me`, except adds [snip]
     logger help - Displays all of the help commands that logger knows about.
     ...
 
+##### Added feature
+
+hubot-message-logger just listens to messages and archives them silently.
+
+	logger> some message
+
+You'll find the message in `log/YYYYmmdd.log` 	
 ### Configuration
 
 A few scripts (including some installed by default) require environment
