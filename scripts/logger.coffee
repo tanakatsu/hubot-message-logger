@@ -22,21 +22,11 @@ module.exports = (robot) ->
   robot.hear /.*/, (res) ->
     msg = res.match
     today = dateFormat(new Date(), "yyyymmdd")
-    logfile = util.format('%s/%s.log', LOG_DIR, today)
+    logfile = util.format('%s/%s.txt', LOG_DIR, today)
 
-    fs.readFile logfile, 'utf8', (err, data) ->
+    fs.appendFile logfile, msg + "\n", 'utf8', (err) ->
       if err
-        console.warn(err)
-        obj = []
+        console.log(err)
       else
-        obj = JSON.parse(data)
-
-      obj.push({msg: msg})
-      json = JSON.stringify(obj)
-
-      fs.writeFile logfile, json, 'utf8', (err) ->
-        if err
-          console.log(err)
-        else
-          console.log('write successfully')
+        console.log('write successfully: ' + msg)
     # res.reply 'ok'
